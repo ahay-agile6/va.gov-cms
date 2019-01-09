@@ -4,13 +4,13 @@ Feature: Workflow
   As a site owner
   I want my content to go through workflow prior to publication.
 
-  @spec @workflow
+  @spec @workflow @tool
   Scenario: Workflow
     Then exactly the following workflows should exist
       | Label     | Machine name | Type               |
       | Editorial | editorial    | Content moderation |
 
-  @spec @workflow
+  @spec @workflow @tool
   Scenario: Workflow states
     Then exactly the following workflow states should exist
       | Workflow  | Label     | Machine name         |
@@ -20,7 +20,7 @@ Feature: Workflow
       | Editorial | Archived  | archived             |
       | Editorial | Staged    | approved_by_reviewer |
 
-  @spec @workflow
+  @spec @workflow @tool
   Scenario: Workflow transitions
     Then exactly the following workflow transitions should exist
       | Workflow  | Label                | Machine name         | From state | To state  |

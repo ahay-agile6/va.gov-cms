@@ -4,7 +4,7 @@ Feature: Views
   As a site owner
   I want to have views for various contexts and applications.
 
-  @spec @views
+  @spec @views @tool
   Scenario: Views
     Then exactly the following views should exist
       | Name                 | Machine name       | Base table        | Status   | Description                                                                                   |
@@ -27,7 +27,7 @@ Feature: Views
       | Who's online block   | who_s_online       | Users             | Enabled  | Shows the user names of the most recently active users, and the total number of active users. |
       | Media library        | media_library      | Media             | Enabled  |                                                                                               |
 
-  @spec @views
+  @spec @views @tool
   Scenario: Views displays
     Then exactly the following views displays should exist
       | View                 | Title             | Machine name       | Display plugin |

@@ -4,7 +4,7 @@ Feature: Media
   As a site owner
   I want to have image styles for various contexts.
 
-  @spec
+  @spec @tool
   Scenario: Image styles
     Then exactly the following image styles should exist
       | Style name          | Machine name   |
@@ -14,7 +14,7 @@ Feature: Media
       | Medium (220×220)    | medium         |
       | Thumbnail (100×100) | thumbnail      |
 
-  @spec
+  @spec @tool
   Scenario: Image effects
     Then exactly the following image effects should exist
       | Image style         | Effect      | Summary                 |
