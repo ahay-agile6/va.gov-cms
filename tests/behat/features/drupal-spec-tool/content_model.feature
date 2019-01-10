@@ -13,7 +13,7 @@ Feature: Content model
       | Document | document | Media type | A locally hosted document, such as a PDF. |
       | Image | image | Media type | Locally hosted images. |
       | Instagram | instagram | Media type | Instagram posts. |
-      | Landing page | landing_page | Content type | A special page with its own one-off layout and content. |
+      | Hub landing page | landing_page | Content type | A special page with its own one-off layout and content. |
       | Tweet | tweet | Media type | Represents a tweet. |
       | Video | video | Media type | A video hosted by YouTube, Vimeo, or some other provider. |
       | Audio file | audio_file | Media type | A locally hosted audio file, such as an MP3. |
@@ -34,8 +34,11 @@ Feature: Content model
       | Alert | alert | Custom block type | An alert box that can be added to individual pages. |
       | Address | address | Paragraph type | An address block  |
       | React Widget | react_widget | Paragraph type | Add a React component to this page. |
+      | Administration | administration | Vocabulary | Represents a hierarchy of the VA, partly for governance purposes. |
+      | Promo | promo | Custom block type | Promote a link with an image, title, and description.     |
 
-  @spec @fields
+
+  @spec @content_type
   Scenario: Fields
     Then exactly the following fields should exist
       | Type | Bundle | Field label | Machine name | Field type | Required | Cardinality | Form widget | Translatable | Help text |
@@ -45,8 +48,8 @@ Feature: Content model
       | Media type | Document | Document | field_document | File |  | 1 | File |  |  |
       | Media type | Image | Image | image | Image | Required | 1 | ImageWidget crop |  |  |
       | Media type | Instagram | Instagram post | embed_code | Text (plain, long) | Required | 1 | Text area (multiple rows) |  | Paste media post URL or embed code. |
-      | Content type | Landing page | Description | body | Text (formatted, long, with summary) |  | 1 | Text area with a summary | Translatable | A description of this page, for use in teasers and lists of content. |
-      | Content type | Landing page | Meta tags | field_meta_tags | Meta tags |  | 1 | Advanced meta tags form | Translatable |  |
+      | Media type | Landing page | Description | body | Text (formatted, long, with summary) |  | 1 | Text area with a summary | Translatable | A description of this page, for use in teasers and lists of content. |
+      | Media type | Landing page | Meta tags | field_meta_tags | Meta tags |  | 1 | Advanced meta tags form | Translatable |  |
       | Media type | Tweet | Tweet | embed_code | Text (plain, long) | Required | 1 | Text area (multiple rows) |  | Paste tweet's URL or embed code. |
       | Media type | Video | Video URL | field_media_video_embed_field | Video Embed | Required | 1 | Video Textfield | Translatable |  |
       | Media type | Audio file | Audio file | field_media_audio_file | File | Required | 1 | File | Translatable |  |
@@ -62,16 +65,16 @@ Feature: Content model
       | Content type | Basic page | Main Content | field_content_block | Entity reference revisions |  | Unlimited | Paragraphs EXPERIMENTAL |  |  |
       | Content type | Basic page | Related Links | field_related_links | Entity reference revisions |  | 1 | Paragraphs EXPERIMENTAL |  |  |
       | Content type | Basic page | Last Update | field_last_update | Date |  | 1 | Date and time |  |  |
-      | Content type | Collapsible Panel Item  | Text | field_wysiwyg | Text (formatted, long) |  | 1 | Text area (multiple rows) | Translatable |  |
+      | Paragraph type | Accordion item | Text | field_wysiwyg | Text (formatted, long) |  | 1 | Text area (multiple rows) | Translatable |  |
       | Paragraph type | Alert Paragraph | Alert Heading | field_alert_heading | Text (plain) | Required | 1 | Textfield |  |  |
       | Paragraph type | Alert Paragraph | Alert Type | field_alert_type | List (text) | Required | 1 | Select list |  |  |
       | Paragraph type | Alert Paragraph | Alert Message | field_alert_message | Text (formatted, long) | Required | 1 | Text area (multiple rows) |  |  |
       | Paragraph type | Alert Paragraph | Trigger Text | field_alert_trigger_text | Text (plain) |  | 1 | Textfield |  | The text that users will click to expand alert box and display message. |
-      | Content type | Collapsible Panel Item  | Title | field_title | Text (plain) | Required | 1 | Textfield | Translatable |  |
-      | Content type | Collapsible panel | Allow more than one item to expand at a time | field_collapsible_panel_multi | Boolean |  | 1 | Single on/off checkbox |  |  |
-      | Content type | Collapsible panel | Collapsible Panel Items | field_va_paragraphs | Entity reference revisions | Required | Unlimited | Paragraphs Classic | Translatable |  |
-      | Content type | Collapsible panel | Add border around items | field_collapsible_panel_bordered | Boolean |  | 1 | Single on/off checkbox |  |  |
-      | Content type | Collapsible panel | Start expanded | field_collapsible_panel_expand | Boolean |  | 1 | Single on/off checkbox |  |  |
+      | Paragraph type | Accordion item | Title | field_title | Text (plain) | Required | 1 | Textfield | Translatable |  |
+      | Paragraph type | Accordion | Allow more than one item to expand at a time | field_collapsible_panel_multi | Boolean |  | 1 | Single on/off checkbox |  |  |
+      | Paragraph type | Accordion | Collapsible Panel Items | field_va_paragraphs | Entity reference revisions | Required | Unlimited | Paragraphs Classic | Translatable |  |
+      | Paragraph type | Accordion | Add border around items | field_collapsible_panel_bordered | Boolean |  | 1 | Single on/off checkbox |  |  |
+      | Paragraph type | Accordion | Start expanded | field_collapsible_panel_expand | Boolean |  | 1 | Single on/off checkbox |  |  |
       | Paragraph type | Expandable Text | Full Text | field_wysiwyg | Text (formatted, long) | Required | 1 | Text area (multiple rows) | Translatable |  |
       | Paragraph type | Expandable Text | Text Expander | field_text_expander | Text (plain) | Required | 1 | Textfield |  |  |
       | Paragraph type | Link teaser | Link | field_link | Link |  | 1 | Link |  |  |
