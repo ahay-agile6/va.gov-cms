@@ -6,6 +6,8 @@ How to start:
 * `git clone git@github.com:department-of-veterans-affairs/va.gov-cms.git vagov`
 * `cd vagov`
 * `lando start`
+* `lando composer install`
+* `lando drush cim`
 * `cd scripts; ./sync-db.sh`
 
 What it does:
